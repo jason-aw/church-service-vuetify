@@ -9,61 +9,45 @@ export default {
   },
   setup() {
     const test = ref("testing");
+    const selectedUserId = ref("");
     const items = [
       {
-        wl: "WL 1",
-        singer: "Singer 1",
-        piano: "Piano 1",
-        keyboard: "Keyboard 1",
-        guitar: "Guitar 1",
-        bass: "Bass 1",
-        drum: "Drums 1",
-        multimedia: "Multimedia 1",
-        sound: "Sound 1",
-        usher: "Usher 1",
+        wl: [
+          { name: "Jason", id: "1" },
+          { name: "WL 2", id: "WL 2" },
+        ],
+        singer: [{ name: "Singer 1", id: "Singer 1" }],
+        piano: [{ name: "Piano 1", id: "Piano 1" }],
+        keyboard: [{ name: "Keyboard 1", id: "Keyboard 1" }],
+        guitar: [{ name: "Guitar 1", id: "Guitar 1" }],
+        bass: [{ name: "Bass 1", id: "Bass 1" }],
+        drum: [{ name: "Jason", id: "1" }],
+        multimedia: [{ name: "Multimedia 1", id: "Multimedia 1" }],
+        sound: [{ name: "Sound 1", id: "Sound 1" }],
+        usher: [{ name: "Usher 1", id: "Usher 1" }],
         week: "minggu 1",
       },
       {
-        wl: "WL 2",
-        singer: "Singer 2",
-        piano: "Piano 2",
-        keyboard: "Keyboard 2",
-        guitar: "Guitar 2",
-        bass: "Bass 2",
-        drum: "Drums 2",
-        multimedia: "Multimedia 2",
-        sound: "Sound 2",
-        usher: "Usher 2",
+        wl: [
+          { name: "WL 2", id: "WL 2" },
+        ],
+        singer: [
+          { name: "Singer 1", id: "Singer 1" },
+          { name: "Jason", id: "1" },
+        ],
+        piano: [{ name: "Piano 1", id: "Piano 1" }],
+        keyboard: [{ name: "Keyboard 1", id: "Keyboard 1" }],
+        guitar: [{ name: "Guitar 1", id: "Guitar 1" }],
+        bass: [{ name: "Jason", id: "1" }],
+        drum: [{ name: "yang lain", id: "2" }],
+        multimedia: [{ name: "Multimedia 1", id: "Multimedia 1" }],
+        sound: [{ name: "Sound 1", id: "Sound 1" }],
+        usher: [{ name: "Usher 1", id: "Usher 1" }],
         week: "minggu 2",
-      },
-      {
-        wl: "WL 3",
-        singer: "Singer 3",
-        piano: "Piano 3",
-        keyboard: "Keyboard 3",
-        guitar: "Guitar 3",
-        bass: "Bass 3",
-        drum: "Drums 3",
-        multimedia: "Multimedia 3",
-        sound: "Sound 3",
-        usher: "Usher 3",
-        week: "minggu 3",
-      },
-      {
-        wl: "WL 4",
-        singer: "Singer 4",
-        piano: "Piano 4",
-        keyboard: "Keyboard 4",
-        guitar: "Guitar 4",
-        bass: "Bass 4",
-        drum: "Drums 4",
-        multimedia: "Multimedia 4",
-        sound: "Sound 4",
-        usher: "Usher 4",
-        week: "minggu 4",
       },
     ];
     const headers = [
+      { title: "Week", key: "week", sortable: false },
       { title: "WL", key: "wl", sortable: false },
       { title: "Singer", key: "singer", sortable: false },
       { title: "Piano", key: "piano", sortable: false },
@@ -74,12 +58,18 @@ export default {
       { title: "Multimedia", key: "multimedia", sortable: false },
       { title: "Sound", key: "sound", sortable: false },
       { title: "Usher", key: "usher", sortable: false },
-      { title: "Week", key: "week", sortable: false },
     ];
+
+    const selectUser = (id) => {
+      selectedUserId.value = id
+    }
+
     return {
       test,
       headers,
       items,
+      selectedUserId,
+      selectUser,
     };
   },
 };

@@ -6,10 +6,31 @@
         <EditOnClickTextField v-model="test" label="Tema" />
       </VCol>
     </VRow>
+    <VRow no-gutters>
+      <VChip>
+        testing
+      </VChip>
+    </VRow>
 
-    <VRow>
+    <VRow no-gutters>
       <VDataTable :items="items" :headers="headers" class="service-table" hide-default-footer>
-
+        <template v-slot:item="{ item }">
+          <tr class="rows">
+            <td v-for="header in headers" :key="header.key">
+              <div v-if="header.key == 'week'">
+                {{ item.week }}
+              </div>
+              <div v-else>
+                <VChip v-for="user in item[header.key]" 
+                  :key="user.id" 
+                  :color="selectedUserId == user.id ? 'primary' : ''"
+                  @click="selectUser(user.id)">
+                  {{ user.name }}
+                </VChip>
+              </div>
+            </td>
+          </tr>
+        </template>
       </VDataTable>
     </VRow>
   </VContainer>
@@ -46,6 +67,16 @@
       .v-data-table-header__content {
         justify-content: center;
       }
+    }
+
+    .rows > td {
+      border: 1px solid red;
+      height: 48px;
+      border-collapse: collapse;
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+      align-items: center;
     }
 
     :deep(thead),
