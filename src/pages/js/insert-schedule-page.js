@@ -61,7 +61,11 @@ export default {
     ];
 
     const selectUser = (id) => {
-      selectedUserId.value = id
+      if (selectedUserId.value === id) {
+        selectedUserId.value = ""
+      } else {
+        selectedUserId.value = id
+      }
     }
 
     return {
